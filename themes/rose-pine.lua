@@ -10,26 +10,45 @@ local gears = require("gears")
 local gfs = require("gears.filesystem")
 local themes_path = gfs.get_themes_dir()
 
+local palette = {
+    background      = "#0c0b11",
+    base            = "#191724",
+    surface         = "#1f1d2e",
+    overlay         = "#26233a",
+    muted           = "#6e6a86",
+    subtle          = "#908caa",
+    text            = "#e0def4",
+    love            = "#eb6f92",
+    gold            = "#f6c177",
+    rose            = "#ebbcba",
+    pine            = "#31748f",
+    foam            = "#9ccfd8",
+    iris            = "#c4a7e7",
+    highlight_low   = "#21202e",
+    highlight_med   = "#403d52",
+    highlight_high  = "#524f67",
+}
+
 local theme = {}
 
-theme.font          = "sans 8"
+theme.font          = "CaskaydiaCove Nerd Font Mono 8"
 
-theme.bg_normal     = "#222222"
-theme.bg_focus      = "#535d6c"
-theme.bg_urgent     = "#ff0000"
-theme.bg_minimize   = "#444444"
+theme.bg_normal     = palette.background
+theme.bg_focus      = palette.background
+theme.bg_urgent     = palette.background
+theme.bg_minimize   = palette.subtle
 theme.bg_systray    = theme.bg_normal
 
-theme.fg_normal     = "#aaaaaa"
-theme.fg_focus      = "#ffffff"
-theme.fg_urgent     = "#ffffff"
-theme.fg_minimize   = "#ffffff"
+theme.fg_normal     = palette.foam
+theme.fg_focus      = palette.gold
+theme.fg_urgent     = palette.love
+theme.fg_minimize   = palette.love
 
-theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
-theme.border_normal = "#000000"
-theme.border_focus  = "#535d6c"
-theme.border_marked = "#91231c"
+theme.useless_gap   = dpi(2)
+theme.border_width  = dpi(2)
+theme.border_normal = palette.background
+theme.border_focus  = palette.gold
+theme.border_marked = palette.foam
 
 -- There are other variable sets
 -- overriding the default one when
@@ -98,9 +117,6 @@ theme.titlebar_maximized_button_focus_inactive  = themes_path.."default/titlebar
 theme.titlebar_maximized_button_normal_active = themes_path.."default/titlebar/maximized_normal_active.png"
 theme.titlebar_maximized_button_focus_active  = themes_path.."default/titlebar/maximized_focus_active.png"
 
--- theme.wallpaper = themes_path.."default/background.png"
-theme.wallpaper = function(s) randomize_wallpaper(s) end
-
 -- You can use your own layout icons like this:
 theme.layout_fairh = themes_path.."default/layouts/fairhw.png"
 theme.layout_fairv = themes_path.."default/layouts/fairvw.png"
@@ -129,13 +145,15 @@ theme.awesome_icon = theme_assets.awesome_icon(
 theme.icon_theme = nil
 
 -- Randomize wallpaper
+theme.wallpaper = function(s) randomize_wallpaper(s) end
+
 -- scan directory, and optionally filter outputs
 function scandir(directory, filter)
     local i, t, popen = 0, {}, io.popen
     if not filter then
         filter = function(s) return true end
     end
-    print(filter)
+
     for filename in popen('ls -a "' .. directory .. '"'):lines() do
         if filter(filename) then
             i = i + 1
@@ -156,6 +174,7 @@ function randomize_wallpaper(s)
     -- get random index
     local index = math.random(1, #files)
 
+    -- set wallpaper of screen s
     gears.wallpaper.maximized(path .. files[index], s, true)
 end
 
