@@ -36,7 +36,7 @@ theme.font          = "CaskaydiaCove Nerd Font Mono 10"
 theme.bg_normal     = palette.background
 theme.bg_focus      = palette.background
 theme.bg_urgent     = palette.background
-theme.bg_minimize   = palette.subtle
+theme.bg_minimize   = palette.background
 theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = palette.foam
@@ -49,6 +49,9 @@ theme.border_width  = dpi(2)
 theme.border_normal = palette.background
 theme.border_focus  = palette.gold
 theme.border_marked = palette.foam
+
+-- For hotkey popup modifier keys
+theme.hotkeys_modifiers_fg = theme.fg_focus
 
 -- There are other variable sets
 -- overriding the default one when
@@ -66,7 +69,7 @@ theme.border_marked = palette.foam
 -- Generate taglist squares:
 local taglist_square_size = dpi(4)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
-    taglist_square_size, theme.fg_normal
+    taglist_square_size, theme.fg_focus
 )
 theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
     taglist_square_size, theme.fg_normal
