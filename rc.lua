@@ -313,8 +313,18 @@ globalkeys = gears.table.join(
     -- Prompt
     -- awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
     --           {description = "run prompt", group = "launcher"}),
+    --
+    -- Menubar
+    -- awful.key({ modkey }, "p", function() menubar.show() end,
+    --           {description = "show the menubar", group = "launcher"}),
+
+    -- Rofi drun launcher
     awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show drun") end,
               {description = "run rofi", group = "launcher"}),
+
+    -- Rofi power menu
+    awful.key({ modkey },            "p",     function () awful.util.spawn("rofi -show p -modi p:rofi-power-menu") end,
+              {description = "run rofi power menu", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -325,10 +335,7 @@ globalkeys = gears.table.join(
                     history_path = awful.util.get_cache_dir() .. "/history_eval"
                   }
               end,
-              {description = "lua execute prompt", group = "awesome"}),
-    -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+              {description = "lua execute prompt", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
