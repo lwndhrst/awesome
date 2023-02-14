@@ -45,7 +45,7 @@ theme.fg_urgent     = palette.love
 theme.fg_minimize   = palette.love
 
 theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(2)
+theme.border_width  = dpi(0)
 theme.border_normal = palette.background
 theme.border_focus  = palette.gold
 theme.border_marked = palette.foam
