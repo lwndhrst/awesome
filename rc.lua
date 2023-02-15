@@ -182,6 +182,12 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
+    -- Create spacer widget
+    s.myspacer  = wibox.widget.separator {
+        forced_width = 10,
+        thickness    = 0,
+    }
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -194,10 +200,10 @@ awful.screen.connect_for_each_screen(function(s)
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
         buttons = tasklist_buttons,
-        style = {
+        style   = {
             shape = gears.shape.rounded_bar,
         },
-        layout   = {
+        layout  = {
             spacing = 5,
             layout  = wibox.layout.flex.horizontal,
         },
@@ -227,6 +233,18 @@ awful.screen.connect_for_each_screen(function(s)
         },
     }
 
+    s.mysystray = wibox.widget {
+        {
+            wibox.widget.systray(),
+            left   = 10,
+            top    = 4,
+            bottom = 4,
+            right  = 10,
+            widget = wibox.container.margin,
+        },
+        widget     = wibox.container.background,
+    }
+
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
@@ -237,13 +255,15 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mylauncher,
             s.mytaglist,
+            s.myspacer,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
+            s.myspacer,
             mykeyboardlayout,
-            wibox.widget.systray(),
+            s.mysystray,
             mytextclock,
             s.mylayoutbox,
         },
