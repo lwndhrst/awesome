@@ -62,7 +62,7 @@ modkey = "Mod4"
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
     awful.layout.suit.tile,
-    awful.layout.suit.floating,
+    -- awful.layout.suit.floating,
     -- awful.layout.suit.tile.left,
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
@@ -181,6 +181,7 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -192,7 +193,38 @@ awful.screen.connect_for_each_screen(function(s)
     s.mytasklist = awful.widget.tasklist {
         screen  = s,
         filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons
+        buttons = tasklist_buttons,
+        style = {
+            shape = gears.shape.rounded_bar,
+        },
+        layout   = {
+            spacing = 5,
+            layout  = wibox.layout.flex.horizontal,
+        },
+        widget_template = {
+            {
+                {
+                    {
+                        {
+                            id     = "icon_role",
+                            widget = wibox.widget.imagebox,
+                        },
+                        margins = 5,
+                        widget  = wibox.container.margin,
+                    },
+                    {
+                        id     = "text_role",
+                        widget = wibox.widget.textbox,
+                    },
+                    layout = wibox.layout.fixed.horizontal,
+                },
+                right = 2,
+                left  = 2,
+                widget = wibox.container.margin,
+            },
+            id     = "background_role",
+            widget = wibox.container.background,
+        },
     }
 
     -- Create the wibox
@@ -203,7 +235,7 @@ awful.screen.connect_for_each_screen(function(s)
         layout = wibox.layout.align.horizontal,
         { -- Left widgets
             layout = wibox.layout.fixed.horizontal,
-            mylauncher,
+            -- mylauncher,
             s.mytaglist,
             s.mypromptbox,
         },
@@ -221,9 +253,9 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
+    -- awful.button({ }, 4, awful.tag.viewnext),
+    -- awful.button({ }, 5, awful.tag.viewprev)
 ))
 -- }}}
 

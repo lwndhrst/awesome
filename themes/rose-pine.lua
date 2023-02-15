@@ -34,8 +34,8 @@ local theme = {}
 theme.font          = "CaskaydiaCove Nerd Font Mono 10"
 
 theme.bg_normal     = palette.background
-theme.bg_focus      = palette.background
-theme.bg_urgent     = palette.background
+theme.bg_focus      = palette.surface
+theme.bg_urgent     = palette.surface
 theme.bg_minimize   = palette.background
 theme.bg_systray    = theme.bg_normal
 
@@ -46,7 +46,7 @@ theme.fg_minimize   = palette.love
 
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
-theme.border_normal = palette.background
+theme.border_normal = palette.surface
 theme.border_focus  = palette.gold
 theme.border_marked = palette.foam
 
