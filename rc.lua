@@ -182,12 +182,6 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
-    -- Create spacer widget
-    s.myspacer  = wibox.widget.separator {
-        forced_width = 10,
-        thickness    = 0,
-    }
-
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -212,34 +206,39 @@ awful.screen.connect_for_each_screen(function(s)
                 {
                     {
                         {
-                            id     = "icon_role",
-                            widget = wibox.widget.imagebox,
+                            {
+                                id     = "icon_role",
+                                widget = wibox.widget.imagebox,
+                            },
+                            margins = 5,
+                            widget  = wibox.container.margin,
                         },
-                        margins = 5,
-                        widget  = wibox.container.margin,
+                        {
+                            id     = "text_role",
+                            widget = wibox.widget.textbox,
+                        },
+                        layout = wibox.layout.fixed.horizontal,
                     },
-                    {
-                        id     = "text_role",
-                        widget = wibox.widget.textbox,
-                    },
-                    layout = wibox.layout.fixed.horizontal,
+                    right  = 2,
+                    left   = 2,
+                    widget = wibox.container.margin,
                 },
-                right = 2,
-                left  = 2,
-                widget = wibox.container.margin,
+                id     = "background_role",
+                widget = wibox.container.background,
             },
-            id     = "background_role",
-            widget = wibox.container.background,
+            right  = 15,
+            left   = 15,
+            widget = wibox.container.margin,
         },
     }
 
     s.mysystray = wibox.widget {
         {
             wibox.widget.systray(),
-            left   = 10,
             top    = 4,
             bottom = 4,
-            right  = 10,
+            left   = 5,
+            right  = 5,
             widget = wibox.container.margin,
         },
         widget     = wibox.container.background,
@@ -255,14 +254,12 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             -- mylauncher,
             s.mytaglist,
-            s.myspacer,
             s.mypromptbox,
         },
         s.mytasklist, -- Middle widget
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
-            s.myspacer,
-            mykeyboardlayout,
+            -- mykeyboardlayout,
             s.mysystray,
             mytextclock,
             s.mylayoutbox,
@@ -376,18 +373,18 @@ globalkeys = gears.table.join(
 
     -- Rofi power menu
     awful.key({ modkey },            "p",     function () awful.util.spawn("rofi -show p -modi p:rofi-power-menu") end,
-              {description = "run rofi power menu", group = "launcher"}),
+              {description = "run rofi power menu", group = "launcher"})
 
-    awful.key({ modkey }, "x",
-              function ()
-                  awful.prompt.run {
-                    prompt       = "Run Lua code: ",
-                    textbox      = awful.screen.focused().mypromptbox.widget,
-                    exe_callback = awful.util.eval,
-                    history_path = awful.util.get_cache_dir() .. "/history_eval"
-                  }
-              end,
-              {description = "lua execute prompt", group = "awesome"})
+    -- awful.key({ modkey }, "x",
+    --           function ()
+    --               awful.prompt.run {
+    --                 prompt       = "Run Lua code: ",
+    --                 textbox      = awful.screen.focused().mypromptbox.widget,
+    --                 exe_callback = awful.util.eval,
+    --                 history_path = awful.util.get_cache_dir() .. "/history_eval"
+    --               }
+    --           end,
+    --           {description = "lua execute prompt", group = "awesome"})
 )
 
 clientkeys = gears.table.join(
