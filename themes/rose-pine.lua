@@ -34,8 +34,8 @@ local theme = {}
 theme.font          = "CaskaydiaCove Nerd Font Mono 10"
 
 theme.bg_normal     = palette.background
-theme.bg_focus      = palette.surface
-theme.bg_urgent     = palette.surface
+theme.bg_focus      = palette.base
+theme.bg_urgent     = palette.base
 theme.bg_minimize   = palette.background
 theme.bg_systray    = theme.bg_normal
 

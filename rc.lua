@@ -182,6 +182,12 @@ awful.screen.connect_for_each_screen(function(s)
                            awful.button({ }, 4, function () awful.layout.inc( 1) end),
                            awful.button({ }, 5, function () awful.layout.inc(-1) end)))
 
+    -- Create s spacer widger
+    s.myspacer  = wibox.widget.separator {
+        forced_width = 15,
+        thickness    = 0,
+    }
+
     -- Create a taglist widget
     s.mytaglist = awful.widget.taglist {
         screen  = s,
@@ -190,62 +196,62 @@ awful.screen.connect_for_each_screen(function(s)
     }
 
     -- Create a tasklist widget
-    s.mytasklist = awful.widget.tasklist {
-        screen  = s,
-        filter  = awful.widget.tasklist.filter.currenttags,
-        buttons = tasklist_buttons,
-        style   = {
-            shape = gears.shape.rounded_bar,
-        },
-        layout  = {
-            spacing = 5,
-            layout  = wibox.layout.flex.horizontal,
-        },
-        widget_template = {
-            {
-                {
+    s.mytasklist = wibox.widget { 
+        {
+            awful.widget.tasklist {
+                screen  = s,
+                filter  = awful.widget.tasklist.filter.currenttags,
+                buttons = tasklist_buttons,
+                style   = {
+                    shape = gears.shape.rounded_bar,
+                },
+                layout  = {
+                    spacing = 10,
+                    layout  = wibox.layout.flex.horizontal,
+                },
+                widget_template = {
                     {
                         {
                             {
-                                id     = "icon_role",
-                                widget = wibox.widget.imagebox,
+                                {
+                                    id     = "icon_role",
+                                    widget = wibox.widget.imagebox,
+                                },
+                                margins = 5,
+                                widget  = wibox.container.margin,
                             },
-                            margins = 5,
-                            widget  = wibox.container.margin,
+                            {
+                                id     = "text_role",
+                                widget = wibox.widget.textbox,
+                            },
+                            layout = wibox.layout.fixed.horizontal,
                         },
-                        {
-                            id     = "text_role",
-                            widget = wibox.widget.textbox,
-                        },
-                        layout = wibox.layout.fixed.horizontal,
+                        right  = 2,
+                        left   = 2,
+                        widget = wibox.container.margin,
                     },
-                    right  = 2,
-                    left   = 2,
-                    widget = wibox.container.margin,
+                    id     = "background_role",
+                    widget = wibox.container.background,
                 },
-                id     = "background_role",
-                widget = wibox.container.background,
             },
-            right  = 15,
             left   = 15,
+            right  = 15,
             widget = wibox.container.margin,
         },
+        widget = wibox.container.background,
     }
 
     s.mysystray = wibox.widget {
         {
             wibox.widget.systray(),
-            top    = 4,
-            bottom = 4,
-            left   = 5,
-            right  = 5,
-            widget = wibox.container.margin,
+            margins = 4,
+            widget  = wibox.container.margin,
         },
-        widget     = wibox.container.background,
+        widget = wibox.container.background,
     }
 
     -- Create the wibox
-    s.mywibox = awful.wibar({ position = "top", screen = s })
+    s.mywibox = awful.wibar { position = "top", screen = s }
 
     -- Add widgets to the wibox
     s.mywibox:setup {
