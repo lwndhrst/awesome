@@ -271,7 +271,7 @@ awful.screen.connect_for_each_screen(function(s)
             -- mykeyboardlayout,
             s.mysystray,
             mytextclock,
-            s.mylayoutbox,
+            -- s.mylayoutbox,
         },
     }
 end)
