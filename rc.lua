@@ -217,7 +217,10 @@ awful.screen.connect_for_each_screen(function(s)
                                     id     = "icon_role",
                                     widget = wibox.widget.imagebox,
                                 },
-                                margins = 5,
+                                top     = 5,
+                                bottom  = 5,
+                                left    = 5,
+                                right   = 10,
                                 widget  = wibox.container.margin,
                             },
                             {

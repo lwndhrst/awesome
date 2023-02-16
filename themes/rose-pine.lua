@@ -46,9 +46,9 @@ theme.fg_minimize   = palette.love
 
 theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(0)
-theme.border_normal = palette.surface
+theme.border_normal = palette.background
 theme.border_focus  = palette.gold
-theme.border_marked = palette.foam
+theme.border_marked = palette.love
 
 -- For hotkey popup modifier keys
 theme.hotkeys_modifiers_fg = theme.fg_focus
