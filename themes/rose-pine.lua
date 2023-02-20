@@ -31,7 +31,7 @@ local palette = {
 
 local theme = {}
 
-theme.font          = "CaskaydiaCove Nerd Font Mono 10"
+theme.font          = "Noto Sans 10"
 
 theme.bg_normal     = palette.background
 theme.bg_focus      = palette.base
