@@ -44,7 +44,7 @@ theme.bg_systray    = theme.bg_normal
 
 theme.fg_normal     = palette.foam
 theme.fg_focus      = palette.gold
-theme.fg_urgent     = palette.gold
+theme.fg_urgent     = palette.love
 theme.fg_minimize   = palette.love
 
 theme.useless_gap   = dpi(5)
