@@ -37,8 +37,8 @@ local theme = {}
 theme.font          = "Caskaydia Cove Nerd Font Mono 10"
 
 theme.bg_normal     = palette.background
-theme.bg_focus      = palette.base
-theme.bg_urgent     = palette.base
+theme.bg_focus      = palette.surface
+theme.bg_urgent     = palette.surface
 theme.bg_minimize   = palette.background
 theme.bg_systray    = theme.bg_normal
 
@@ -47,11 +47,11 @@ theme.fg_focus      = palette.gold
 theme.fg_urgent     = palette.love
 theme.fg_minimize   = palette.love
 
-theme.useless_gap   = dpi(4)
-theme.border_width  = dpi(2)
+theme.useless_gap   = dpi(0)
+theme.border_width  = dpi(1)
 theme.border_normal = palette.background
-theme.border_focus  = palette.foam
-theme.border_marked = palette.foam
+theme.border_focus  = palette.overlay
+theme.border_marked = palette.gold
 
 -- For hotkey popup modifier keys
 theme.hotkeys_modifiers_fg = theme.fg_focus
