@@ -203,10 +203,10 @@ awful.screen.connect_for_each_screen(function(s)
                 filter  = awful.widget.tasklist.filter.currenttags,
                 buttons = tasklist_buttons,
                 style   = {
-                    shape = gears.shape.rounded_bar,
+                    shape = gears.shape.rectangle,
                 },
                 layout  = {
-                    spacing = 10,
+                    -- spacing = 10,
                     layout  = wibox.layout.flex.horizontal,
                 },
                 widget_template = {
@@ -219,7 +219,7 @@ awful.screen.connect_for_each_screen(function(s)
                                 },
                                 top     = 5,
                                 bottom  = 5,
-                                left    = 5,
+                                left    = 10,
                                 right   = 10,
                                 widget  = wibox.container.margin,
                             },
