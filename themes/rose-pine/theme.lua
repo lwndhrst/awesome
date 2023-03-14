@@ -56,7 +56,9 @@ theme.border_marked = palette.gold
 -- For hotkey popup modifier keys
 theme.hotkeys_modifiers_fg = theme.fg_focus
 
--- There are other variable sets
+theme.systray_icon_spacing = 5
+
+-- There are other variable s tsets
 -- overriding the default one when
 -- defined, the sets are:
 -- taglist_[bg|fg]_[focus|urgent|occupied|empty|volatile]
