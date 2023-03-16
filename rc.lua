@@ -377,12 +377,16 @@ globalkeys = gears.table.join(
     --           {description = "show the menubar", group = "launcher"}),
 
     -- Rofi drun launcher
-    awful.key({ modkey },            "r",     function () awful.util.spawn("rofi -show drun") end,
+    awful.key({ modkey },           "r",    function () awful.util.spawn("rofi -show drun") end,
               {description = "run rofi", group = "launcher"}),
 
     -- Rofi power menu
-    awful.key({ modkey },            "p",     function () awful.util.spawn("rofi -show p -modi p:rofi-power-menu") end,
-              {description = "run rofi power menu", group = "launcher"})
+    awful.key({ modkey },           "p",    function () awful.util.spawn("rofi -show p -modi p:rofi-power-menu") end,
+              {description = "run rofi power menu", group = "launcher"}),
+
+    -- Screenshot (flameshot)
+    awful.key({ modkey, "Shift" },  "s",    function () awful.util.spawn("flameshot gui") end,
+              {description = "flameshot (screenshot tool)", group = "launcher"})
 
     -- awful.key({ modkey }, "x",
     --           function ()
