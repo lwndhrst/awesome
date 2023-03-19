@@ -386,7 +386,23 @@ globalkeys = gears.table.join(
 
     -- Screenshot (flameshot)
     awful.key({ modkey, "Shift" },  "s",    function () awful.util.spawn("flameshot gui") end,
-              {description = "flameshot (screenshot tool)", group = "launcher"})
+              {description = "flameshot (screenshot tool)", group = "launcher"}),
+
+    -- PulseAudio volume controls
+    awful.key({ },  "XF86AudioRaiseVolume", function () awful.util.spawn("pamixer --increase 5") end,
+              {description = "increase volume by 5", group = "audio"}),
+
+    awful.key({ },  "XF86AudioLowerVolume", function () awful.util.spawn("pamixer --decrease 5") end,
+              {description = "decrease volume by 5", group = "audio"}),
+
+    awful.key({ },  "XF86AudioMute",        function () awful.util.spawn([[bash -c "
+                if [ $(pamixer --get-mute) = "true" ]; then
+                    pamixer -u
+                else
+                    pamixer -m
+                fi
+              "]]) end,
+              {description = "toggle mute", group = "audio"})
 
     -- awful.key({ modkey }, "x",
     --           function ()
