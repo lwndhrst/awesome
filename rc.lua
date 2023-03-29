@@ -377,11 +377,17 @@ globalkeys = gears.table.join(
     --           {description = "show the menubar", group = "launcher"}),
 
     -- Rofi drun launcher
-    awful.key({ modkey },           "r",    function () awful.util.spawn("rofi -show drun") end,
+    awful.key({ modkey },   "r",
+              function () 
+                  awful.util.spawn("rofi -show drun -sorting-method fzf -sort -matching fuzzy")
+              end,
               {description = "run rofi", group = "launcher"}),
 
     -- Rofi power menu
-    awful.key({ modkey },           "p",    function () awful.util.spawn("rofi -show p -modi p:rofi-power-menu") end,
+    awful.key({ modkey },   "p",
+              function () 
+                  awful.util.spawn("rofi -show p -modi p:rofi-power-menu -sorting-method fzf -sort -matching fuzzy")
+              end,
               {description = "run rofi power menu", group = "launcher"}),
 
     -- Screenshot (flameshot)
@@ -395,13 +401,16 @@ globalkeys = gears.table.join(
     awful.key({ },  "XF86AudioLowerVolume", function () awful.util.spawn("pamixer --decrease 5") end,
               {description = "decrease volume by 5", group = "audio"}),
 
-    awful.key({ },  "XF86AudioMute",        function () awful.util.spawn([[bash -c "
-                if [ $(pamixer --get-mute) = "true" ]; then
-                    pamixer -u
-                else
-                    pamixer -m
-                fi
-              "]]) end,
+    awful.key({ },  "XF86AudioMute",
+              function ()
+                  awful.util.spawn([[bash -c "
+                      if [ $(pamixer --get-mute) = "true" ]; then
+                          pamixer -u
+                      else
+                          pamixer -m
+                      fi
+                  "]])
+              end,
               {description = "toggle mute", group = "audio"})
 
     -- awful.key({ modkey }, "x",
