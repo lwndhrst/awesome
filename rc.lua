@@ -385,14 +385,27 @@ globalkeys = gears.table.join(
     -- Rofi drun launcher
     awful.key({ modkey },   "r",
               function () 
-                  awful.util.spawn("rofi -show drun -sorting-method fzf -sort -matching fuzzy")
+                  awful.util.spawn([[
+				      rofi \
+					      -show drun \
+						  -sorting-method fzf \
+						  -sort \
+						  -matching fuzzy
+				  ]])
               end,
               {description = "run rofi", group = "launcher"}),
 
     -- Rofi power menu
     awful.key({ modkey },   "p",
               function () 
-                  awful.util.spawn("rofi -show p -modi p:rofi-power-menu -sorting-method fzf -sort -matching fuzzy")
+                  awful.util.spawn([[
+				      rofi \
+					      -show p \
+						  -modi p:'rofi-power-menu --no-symbols' \
+						  -sorting-method fzf \
+						  -sort \
+						  -matching fuzzy
+				  ]])
               end,
               {description = "run rofi power menu", group = "launcher"}),
 
