@@ -1,1 +1,1 @@
-# dotfiles-awesome
+# Personal Configuration for AwesomeWM
