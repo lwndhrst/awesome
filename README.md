@@ -1,1 +1,1 @@
-# Personal Configuration for AwesomeWM
+# Personal Config for AwesomeWM
